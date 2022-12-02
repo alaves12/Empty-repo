@@ -1,0 +1,21 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: 396037123707
+    AWS_REGION: ap-northeast-1
+    ECR_REPOSITORY: sam-repository
+    SAM_APP_NAME: sam-app
+    ALIAS_NAME: Ver3
+    # ALIAS_DESCRIPTION: 初回リリースです。
+    ALIAS_DESCRIPTION: 3rd
+
+phases:
+  install:
+    runtime-versions:
+      docker: 19
+    commands:
+      - echo install step...
+  pre_build:
+    commands:
+      - echo "CommitId is ${CommitId}"
