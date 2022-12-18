@@ -11,3 +11,4 @@ phases:
   pre_build:
     commands:
       - echo "CommitId is ${BUILD_ID}"
+      - echo "Resolved source version is $CODEBUILD_RESOLVED_SOURCE_VERSION"
