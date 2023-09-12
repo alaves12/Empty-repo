@@ -1,0 +1,10 @@
+# Buildspec runs in the build stage of your pipeline.
+version: 0.2
+phases:
+  build:
+    commands:
+      - Prefix=CPCall
+      - echo "Run your tests"
+      - printf '{"Parameters":{"prefix":"%s"}}' ${Prefix} > config.json
+artifacts:
+  files: config.json

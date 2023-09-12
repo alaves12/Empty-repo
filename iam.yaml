@@ -1,0 +1,39 @@
+Parameters:
+  prefix:
+    Type: String
+    Default: 2560796043-set
+
+Resources:
+  MyIamRole:
+    Type: AWS::IAM::Role
+    DeletionPolicy: Retain
+    Properties:
+      Path: /
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              AWS:
+              - !Ref AWS::AccountId
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - 
+         PolicyName: "AssumeRolePolicy"
+         PolicyDocument:
+           Version: "2012-10-17"
+           Statement:
+              - 
+                Effect: "Allow"
+                Action: "sts:AssumeRole"
+                Resource: "*"
+  
+  MyIamUser:
+    DeletionPolicy: Retain
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Sub ${prefix}-user
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
